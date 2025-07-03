@@ -1,1 +1,4 @@
 @import "tailwindcss";
+body {
+    font-family:'Work Sans', sans-serif;
+}

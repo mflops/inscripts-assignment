@@ -1,8 +1,10 @@
 import Header from "./components/Header"
+import Toolbar from "./components/Toolbar"
 export default function App() {
   return (
     <div>
-      <Header></Header>
+      <Header />
+      <Toolbar />
     </div>
   )
 }
