@@ -55,7 +55,7 @@ export default function SpreadsheetTable() {
     })
 
     return (
-        <div className="overflow-auto bg-[#F6F6F6]">
+        <div className="overflow-auto bg-[#F6F6F6] pb-16">
             <table>
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
