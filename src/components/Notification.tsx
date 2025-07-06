@@ -2,9 +2,9 @@ import { VscBell } from "react-icons/vsc";
 
 export default function Notification() {
     return (
-        <div className="h-12 w-12 flex items-center justify-center">
-            <button className="cursor-pointer">
-                <VscBell className="w-8 h-8"/>
+        <div className="h-10 w-10 p-2 flex items-center justify-center">
+            <button className="cursor-pointer p-0 m-0">
+                <VscBell className="w-6 h-6 text-[#121212]"/>
             </button>
         </div>
     )

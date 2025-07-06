@@ -11,7 +11,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-[#FFFFFF] w-full h-14 px-10 mx-[2px] fixed bottom-0 left-0 right-0 z-10 border-t-[#EEEEEE] border-t-2 flex flex-row items-center">
+        <footer className="bg-[#FFFFFF] w-full h-12 fixed bottom-0 left-0 right-0 z-10 border-t-[#EEEEEE] border-t-2 flex flex-row items-center pt-1 pl-8 pr-4">
             {["All Orders", "Pending", "Reviewed", "Arrived"].map((label, index) => (
                 <TabButton
                     key={label}

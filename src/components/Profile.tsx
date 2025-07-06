@@ -1,11 +1,11 @@
 export default function Profile() {
     return (
-        <div className="flex flex-row items-center gap-2">
-            <div className="bg-neutral-200 h-9 w-9 rounded-full">
+        <div className="flex flex-row items-center gap-2 h-full pl-2 pt-1 pb-1 pr-2">
+            <div className="bg-neutral-200 h-7 w-7 rounded-full">
             </div>
-            <div className="flex flex-col h-8 justify-center">
-                <p className="text-md m-0 leading-none font-light w-24">John Doe</p>
-                <p className="text-neutral-500 text-sm m-0 leading-none font-light w-24">john.doe...</p>
+            <div className="flex flex-col h-6 justify-center">
+                <p className="text-xs m-0 leading-none font-regular w-24 text-[#121212]">John Doe</p>
+                <p className="text-[#757575] text-xs m-0 leading-none font-regular w-24">john.doe...</p>
             </div>
         </div>
     )
