@@ -51,11 +51,12 @@ export default function SpreadsheetTable() {
     const table = useReactTable({
         data: tableData,
         columns,
-        getCoreRowModel: getCoreRowModel()
+        getCoreRowModel: getCoreRowModel(),
+        columnResizeMode: "onChange",
     })
 
     return (
-        <div className="overflow-auto bg-[#F6F6F6] pb-16 w-full ring-[#E2E8F0] ring-1">
+        <div className="overflow-auto bg-[#F6F6F6] pb-16 ring-[#E2E8F0] ring-1 w-full">
             <table className="w-full">
                 <thead className="h-8">
                     {table.getHeaderGroups().map((headerGroup) => (
@@ -64,11 +65,22 @@ export default function SpreadsheetTable() {
                                 <th
                                     key={header.id}
                                     colSpan={header.colSpan}
-                                    className={getHeaderClass(header.column.id)}
+                                    className={`relative ${getHeaderClass(header.column.id)}`}
+                                    style={{ width: header.getSize() }}
                                 >
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(header.column.columnDef.header, header.getContext())}
+
+                                    {/* Column resizer: only for leaf columns (colSpan === 1) */}
+                                    {header.column.getCanResize() && header.colSpan === 1 && (
+                                        <div
+                                            onMouseDown={header.getResizeHandler()}
+                                            onTouchStart={header.getResizeHandler()}
+                                            className={`absolute right-0 top-0 h-full w-1 cursor-col-resize select-none touch-none
+                                            ${header.column.getIsResizing() ? "bg-[#4b6a4f]" : "bg-transparent"}`}
+                                        />
+                                    )}
                                 </th>
                             ))}
                         </tr>
@@ -79,18 +91,22 @@ export default function SpreadsheetTable() {
                     {table.getRowModel().rows.map(row => (
                         <tr key={row.id}>
                             {row.getVisibleCells().map(cell => (
-                                <td key={cell.id} className={` bg-white ring-1 ring-[#f6f6f6] ring-inset
-                                ${cell.column.id === "rowNumber" ? "px-1" : "px-0"}`}>
+                                <td
+                                    key={cell.id}
+                                    className={`bg-white ring-1 ring-[#f6f6f6] ring-inset
+                                ${cell.column.id === "rowNumber" ? "px-1" : "px-0"}`}
+                                    style={{ width: cell.column.getSize() }} // make sure cells respect width
+                                >
                                     {flexRender(cell.column.columnDef.cell, {
                                         ...cell.getContext(),
                                         updateData: (value: string | number) => {
                                             const rowIndex = row.index;
                                             const colId = cell.column.id;
-                                            setTableData(prev => (
+                                            setTableData(prev =>
                                                 prev.map((r, i) =>
                                                     i === rowIndex ? { ...r, [colId]: value } : r
                                                 )
-                                            ))
+                                            );
                                         }
                                     })}
                                 </td>

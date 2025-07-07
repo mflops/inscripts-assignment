@@ -44,7 +44,9 @@ const rowNumberCol: ColumnDef<RowData, unknown> = {
     cell: ({ row }: { row: { index: number } }) => (
         <div className="text-[#757575] text-center text-sm font-normal">{row.index + 1}</div>
     ),
-    size: 32
+    size: 32,
+    minSize: 24,
+    maxSize: 64,
 }
 
 const jobRequestCol: ColumnDef<RowData, unknown> = {
@@ -63,12 +65,13 @@ const jobRequestCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,112,0.2)]"
+                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
                 value={value}
                 onChange={(e) => updateData(e.target.value)}
             />
         );
     },
+    size: 256,
 };
 
 const submittedCol: ColumnDef<RowData, unknown> = {
@@ -87,12 +90,13 @@ const submittedCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="text-right outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,112,0.2)]"
+                className="text-right outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
                 onChange={(e) => updateData(e.target.value)}
                 value={value}
             />
         )
-    }
+    },
+    size: 124,
 }
 
 const statusCol: ColumnDef<RowData, unknown> = {
@@ -113,19 +117,20 @@ const statusCol: ColumnDef<RowData, unknown> = {
         return (
             ["Complete", "In-process", "Blocked", "Need to start"].includes(value) ? (
                 <div className="flex flex-row items-center justify-center w-full h-8 px-2">
-                    <span className={`px-2 py-1 rounded-full font-medium text-center ${colorClass} w-fit h-fit text-sm`}>
+                    <span className={`px-2 py-1 rounded-full font-medium text-center ${colorClass} w-fit h-fit text-sm truncate overflow-hidden whitespace-nowrap`}>
                         {value}
                     </span>
                 </div>
             ) : (
                 <input
-                    className="text-center font-medium outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] text-ellipsis focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,112,0.2)]"
+                    className="text-center font-medium outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] text-ellipsis focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
                     value={value}
                     onChange={(e) => updateData(e.target.value)}
                 />
             )
         );
-    }
+    },
+    size: 124,
 }
 
 const submitterCol: ColumnDef<RowData, unknown> = {
@@ -144,12 +149,13 @@ const submitterCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,112,0.2)]"
+                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
                 value={value}
                 onChange={(e) => updateData(e.target.value)}
             />
         )
-    }
+    },
+    size: 124,
 }
 
 const urlCol: ColumnDef<RowData, unknown> = {
@@ -168,12 +174,13 @@ const urlCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,112,0.2)]"
+                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
                 value={value}
                 onChange={(e) => updateData(e.target.value)}
             />
         )
-    }
+    },
+    size: 124,
 }
 
 const assignedCol: ColumnDef<RowData, unknown> = {
@@ -191,12 +198,13 @@ const assignedCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] text-ellipsis focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,112,0.2)]"
+                className="outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] text-ellipsis focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
                 value={value}
                 onChange={(e) => updateData(e.target.value)}
             />
         )
-    }
+    },
+    size: 124,
 }
 
 const priorityCol: ColumnDef<RowData, unknown> = {
@@ -213,9 +221,10 @@ const priorityCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         const colorClass = priorityStyles[value];
         return (
-            <input className={`text-center block ${colorClass} font-medium outline-none text-ellipsis px-2 w-full h-8 text-xs font-regular focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,112,0.2)]`} value={value} onChange={(e) => updateData(e.target.value)} />
+            <input className={`text-center block ${colorClass} font-medium outline-none text-ellipsis px-2 w-full h-8 text-xs font-regular focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]`} value={value} onChange={(e) => updateData(e.target.value)} />
         )
-    }
+    },
+    size: 124,
 }
 
 const dueDateCol: ColumnDef<RowData, unknown> = {
@@ -232,12 +241,13 @@ const dueDateCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="text-right block outline-none text-ellipsis px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,112,0.2)]"
+                className="text-right block outline-none text-ellipsis px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
                 value={value}
                 onChange={(e) => updateData(e.target.value)}
             />
         )
-    }
+    },
+    size: 124,
 }
 
 const estValueCol: ColumnDef<RowData, unknown> = {
@@ -256,7 +266,7 @@ const estValueCol: ColumnDef<RowData, unknown> = {
         return (
             <div className="flex items-center gap-1 w-full">
                 <input
-                    className={`text-right outline-none text-ellipsis w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,112,0.2)] ${typeof value === "number" ? "pl-2" : "px-2" }`}
+                    className={`text-right outline-none text-ellipsis w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)] ${typeof value === "number" ? "pl-2" : "px-2"}`}
                     value={value}
                     onChange={(e) => {
                         const val = e.target.value;
@@ -273,7 +283,8 @@ const estValueCol: ColumnDef<RowData, unknown> = {
                 )}
             </div>
         );
-    }
+    },
+    size: 124,
 }
 
 const addColumn: ColumnDef<RowData, unknown> = {
@@ -281,7 +292,9 @@ const addColumn: ColumnDef<RowData, unknown> = {
     id: "addColumn",
     cell: () => (
         <div className="w-40"></div>
-    )
+    ),
+    size: 110,
+    maxSize: 110,
 }
 
 export const columns: ColumnDef<RowData, unknown>[] = [
@@ -291,6 +304,7 @@ export const columns: ColumnDef<RowData, unknown>[] = [
             <div className="bg-white w-full h-full"></div>
         ),
         columns: [rowNumberCol],
+        enableResizing: false,
     },
     {
         id: "projectInfo",
@@ -304,11 +318,13 @@ export const columns: ColumnDef<RowData, unknown>[] = [
             </div>
         ),
         columns: [jobRequestCol, submittedCol, statusCol, submitterCol],
+        enableResizing: false,
     },
     {
         id: "urlGroup",
         header: "",
         columns: [urlCol],
+        enableResizing: false,
     },
     {
         id: "abcGroup",
@@ -320,17 +336,21 @@ export const columns: ColumnDef<RowData, unknown>[] = [
             </div>
         ),
         columns: [assignedCol],
+        enableResizing: false,
     },
     {
         id: "questionGroup",
         header: () => (
             <div className="flex flex-row items-center justify-center gap-1 px-1 py-[2px]">
                 <PiArrowsSplitBold className="text-[#FFFFFF]" />
-                <span className="text-[#463E59] font-medium text-sm">Answer a question</span>
-                <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => (console.log("Answer a question menu clicked"))}/>
+                <span className="text-[#463E59] font-medium text-sm text-center">
+                    Answer a question
+                </span>
+                <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => (console.log("Answer a question menu clicked"))} />
             </div>
         ),
         columns: [priorityCol, dueDateCol],
+        enableResizing: false,
     },
     {
         id: "extractGroup",
@@ -338,10 +358,11 @@ export const columns: ColumnDef<RowData, unknown>[] = [
             <div className="flex flex-row items-center justify-center gap-1 px-1 py-[2px]">
                 <PiArrowsSplitBold className="text-[#FFFFFF]" />
                 <span className="text-[#695149] font-medium text-sm">Extract</span>
-                <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => (console.log("Extract menu clicked"))}/>
+                <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => (console.log("Extract menu clicked"))} />
             </div>
         ),
         columns: [estValueCol],
+        enableResizing: false,
     },
     {
         id: "add",
@@ -351,5 +372,6 @@ export const columns: ColumnDef<RowData, unknown>[] = [
             </div>
         ),
         columns: [addColumn],
+        enableResizing: false,
     },
 ];
