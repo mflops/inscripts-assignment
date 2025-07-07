@@ -55,7 +55,7 @@ const jobRequestCol: ColumnDef<RowData, unknown> = {
                 <FaBriefcase className="text-[#AFAFAF] size-3" />
                 <span className="font-semibold text-xs">Job Request</span>
             </div>
-            <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" />
+            <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" onClick={() => console.log('Job Request column sort clicked!')} />
         </div>
     ),
     cell: (context) => {
@@ -79,7 +79,7 @@ const submittedCol: ColumnDef<RowData, unknown> = {
                 <IoCalendar className="text-[#AFAFAF]/[0.7] size-3" />
                 <span className="font-semibold text-xs">Submitted</span>
             </div>
-            <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" />
+            <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" onClick={() => console.log('Submitted column sort clicked!')} />
         </div>
     ),
     cell: (context: CellContext<RowData, unknown>) => {
@@ -103,7 +103,7 @@ const statusCol: ColumnDef<RowData, unknown> = {
                 <FaCircleChevronDown className="text-[#AFAFAF]/[0.7] size-3" />
                 <span className="font-semibold text-sm">Status</span>
             </div>
-            <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" />
+            <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" onClick={() => console.log('Status column sort clicked!')} />
         </div>
     ),
     cell: (context: CellContext<RowData, unknown>) => {
@@ -136,7 +136,7 @@ const submitterCol: ColumnDef<RowData, unknown> = {
                 <FaUser className="text-[#AFAFAF]/[0.7] size-3" />
                 <span className="font-semibold text-sm">Submitter</span>
             </div>
-            <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" />
+            <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" onClick={() => console.log('Submitter column sort clicked!')} />
         </div>
     ),
     cell: (context: CellContext<RowData, unknown>) => {
@@ -160,7 +160,7 @@ const urlCol: ColumnDef<RowData, unknown> = {
                 <FaGlobe className="text-[#AFAFAF]/[0.7] size-3" />
                 <span className="font-semibold text-sm">URL</span>
             </div>
-            <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" />
+            <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" onClick={() => console.log('URL column sort clicked!')} />
         </div>
     ),
     cell: (context: CellContext<RowData, unknown>) => {
@@ -300,7 +300,7 @@ export const columns: ColumnDef<RowData, unknown>[] = [
                     <IoMdLink className="text-md text-[#1A8CFF]" />
                     <span className="font-normal text-[#545454] text-xs">Q3 Financial Overview</span>
                 </div>
-                <VscSync className="text-[#FA6736] text-md -rotate-90" />
+                <VscSync className="text-[#FA6736] text-md -rotate-90 cursor-pointer" onClick={() => console.log('Sync button clicked!')} />
             </div>
         ),
         columns: [jobRequestCol, submittedCol, statusCol, submitterCol],
@@ -316,7 +316,7 @@ export const columns: ColumnDef<RowData, unknown>[] = [
             <div className="flex flex-row items-center justify-center gap-1 h-6 w-full px-1 py-[2px]">
                 <PiArrowsSplitBold className="text-[#A3ACA3]" />
                 <span className="text-[#505450] font-medium text-sm">ABC</span>
-                <HiDotsHorizontal className="text-[#AFAFAF]" />
+                <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => (console.log("ABC menu clicked"))} />
             </div>
         ),
         columns: [assignedCol],
@@ -327,7 +327,7 @@ export const columns: ColumnDef<RowData, unknown>[] = [
             <div className="flex flex-row items-center justify-center gap-1 px-1 py-[2px]">
                 <PiArrowsSplitBold className="text-[#FFFFFF]" />
                 <span className="text-[#463E59] font-medium text-sm">Answer a question</span>
-                <HiDotsHorizontal className="text-[#AFAFAF]" />
+                <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => (console.log("Answer a question menu clicked"))}/>
             </div>
         ),
         columns: [priorityCol, dueDateCol],
@@ -338,7 +338,7 @@ export const columns: ColumnDef<RowData, unknown>[] = [
             <div className="flex flex-row items-center justify-center gap-1 px-1 py-[2px]">
                 <PiArrowsSplitBold className="text-[#FFFFFF]" />
                 <span className="text-[#695149] font-medium text-sm">Extract</span>
-                <HiDotsHorizontal className="text-[#AFAFAF]" />
+                <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => (console.log("Extract menu clicked"))}/>
             </div>
         ),
         columns: [estValueCol],
@@ -346,7 +346,7 @@ export const columns: ColumnDef<RowData, unknown>[] = [
     {
         id: "add",
         header: () => (
-            <div className="flex flex-row items-center justify-center">
+            <div className="flex flex-row items-center justify-center h-full w-full cursor-pointer" onClick={() => (console.log("Add column clicked!"))}>
                 <IoAddOutline className="size-5 text-[#000000]" />
             </div>
         ),

@@ -8,11 +8,11 @@ export default function Header() {
     return (
         <div className="flex flex-row items-center justify-between w-full h-14 py-2 px-4 border-b-1 border-b-[#EEEEEE]">
             <div className="flex flex-row items-center gap-4 h-6 p-0">
-                <button>
+                <button onClick={() => console.log('Sidebar button clicked!')} className="cursor-pointer">
                     <TbLayoutSidebarRightFilled className="h-7 w-7 text-[#618666]"/>
                 </button>
                 <Breadcrumb />
-                <HiDotsHorizontal className="text-[#AFAFAF]"/>
+                <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => console.log('Dots menu clicked!')}/>
             </div>
             <div className="flex flex-row items-center gap-1 h-10">
                 <Searchbar />

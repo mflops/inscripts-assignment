@@ -1,6 +1,6 @@
 export default function Profile() {
     return (
-        <div className="flex flex-row items-center gap-2 h-full pl-2 pt-1 pb-1 pr-2">
+        <div className="flex flex-row items-center gap-2 h-full pl-2 pt-1 pb-1 pr-2 cursor-pointer hover:rounded-md hover:bg-[#EEEEEE]" onClick={() => (console.log("Profile clicked!"))}>
             <div className="bg-neutral-200 h-7 w-7 rounded-full">
             </div>
             <div className="flex flex-col h-6 justify-center">

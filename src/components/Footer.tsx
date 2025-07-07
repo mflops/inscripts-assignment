@@ -7,7 +7,11 @@ export default function Footer() {
 
     const handleAddTab = () => {
         console.log("Add tab clicked!");
-        // Later: add logic to open a modal or create a new tab
+    };
+
+    const handleTabClick = (index: number, label: string) => {
+        console.log(`${label} tab clicked!`);
+        setActiveTab(index);
     };
 
     return (
@@ -18,7 +22,7 @@ export default function Footer() {
                     label={label}
                     index={index}
                     activeIndex={activeTab}
-                    onClick={() => setActiveTab(index)}
+                    onClick={() => handleTabClick(index, label)}
                 />
             ))}
 
