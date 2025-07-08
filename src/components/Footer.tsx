@@ -4,9 +4,12 @@ import TabButton from "./TabButton";
 
 export default function Footer() {
     const [activeTab, setActiveTab] = useState(0);
+    const [tabs, setTabs] = useState(["All Orders", "Pending", "Reviewed", "Arrived"]);
 
     const handleAddTab = () => {
         console.log("Add tab clicked!");
+        setTabs([...tabs, `Sheet ${tabs.length+1}`]);
+        setActiveTab(tabs.length);
     };
 
     const handleTabClick = (index: number, label: string) => {
@@ -15,8 +18,8 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-[#FFFFFF] w-full h-12 fixed bottom-0 left-0 right-0 z-10 border-t-[#EEEEEE] border-t-2 flex flex-row items-center pt-1 pl-8 pr-4">
-            {["All Orders", "Pending", "Reviewed", "Arrived"].map((label, index) => (
+        <footer className="bg-[#FFFFFF] w-full h-12 fixed bottom-0 left-0 right-0 z-10 border-t-[#EEEEEE] border-t-2 flex flex-row items-center pt-1 pl-8 pr-4 overflow-auto">
+            {tabs.map((label, index) => (
                 <TabButton
                     key={label}
                     label={label}

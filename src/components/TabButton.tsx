@@ -10,7 +10,7 @@ export default function TabButton({ label, index, activeIndex, onClick }: TabBut
 
     return (
         <button
-            className={`h-full px-4 ${isActive ? "bg-[#E8F0E9] border-t-2 border-t-[#4B6A4F] text-[#3E5741] font-semibold" : "text-[#757575] font-medium"}`}
+            className={`h-full px-4 ${isActive ? "bg-[#E8F0E9] border-t-2 border-t-[#4B6A4F] text-[#3E5741] font-semibold" : "text-[#757575] font-medium"} whitespace-nowrap`}
             onClick={onClick}
         >
             {label}
