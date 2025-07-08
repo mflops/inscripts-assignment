@@ -94,6 +94,7 @@ export default function SpreadsheetTable() {
         // Get current cell count to avoid stale closure
         const firstRow = table.getRowModel().rows[0];
         const maxColIndex = firstRow ? firstRow.getVisibleCells().length - 1 : 0;
+        const cells = firstRow ? firstRow.getVisibleCells() : [];
 
         switch (key) {
             case 'ArrowUp':
@@ -113,7 +114,11 @@ export default function SpreadsheetTable() {
                 break;
             case 'ArrowRight':
                 if (colIndex < maxColIndex) {
-                    newColIndex = colIndex + 1;
+                    // Prevent moving into addColumn
+                    const nextCell = cells[colIndex + 1];
+                    if (nextCell && nextCell.column.id !== 'addColumn') {
+                        newColIndex = colIndex + 1;
+                    }
                 }
                 break;
             default:
