@@ -29,15 +29,15 @@ const getHeaderClass = (columnId: string) => {
         assigned: "pl-2 pr-1 bg-[#e6f2e9] h-8",
         priority: "pl-2 pr-1 bg-[#EAE3FC] h-8",
         dueDate: "pl-2 pr-1 bg-[#EAE3FC] h-8",
-        estValue: "pl-2 pr-1 bg-[#ffe9df] h-8",
-        addColumn: "pl-2 pr-1 bg-[#FFFFFF] h-8",
+        estValue: "pl-2 pr-1 bg-[#ffe9df] h-8 border-r-0",
+        addColumn: "pl-2 pr-1 bg-[#FFFFFF] h-8 border-dashed border-x-2 border-x-[#cbcbcb]",
         rowNumberGroup: "bg-[#FFFFFF] p-2 h-8",
         projectInfo: "bg-[#e2e2e2] p-2 h-8",
         urlGroup: "bg-[#FFFFFF] h-8",
         abcGroup: "bg-[#cfe3d4] h-8 px-4",
         questionGroup: "bg-[#DCCFFC] h-8 px-4",
-        extractGroup: "bg-[#ffc0ad] h-8 px-4",
-        add: "bg-[#EEEEEE] h-8 px-2",
+        extractGroup: "bg-[#ffc0ad] h-8 px-4 border-r-0",
+        add: "bg-[#EEEEEE] h-8 px-2 border-dashed border-x-2 border-x-[#cbcbcb]",
     }
 
     return (
@@ -60,7 +60,7 @@ export default function SpreadsheetTable() {
     const focusCell = useCallback((rowIndex: number, colIndex: number) => {
         const cellKey = `${rowIndex}-${colIndex}`;
         const cellElement = cellRefs.current[cellKey];
-        
+
         if (cellElement) {
             // If it's an input element, focus it directly
             if (cellElement instanceof HTMLInputElement) {
@@ -73,13 +73,13 @@ export default function SpreadsheetTable() {
                 }
             }
         }
-        
+
         setFocusedCell({ rowIndex, colIndex });
     }, []);
 
     const handleKeyDown = useCallback((e: KeyboardEvent, rowIndex: number, colIndex: number) => {
         const { key } = e;
-        
+
         // Only handle arrow keys
         if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) {
             return;
@@ -90,7 +90,7 @@ export default function SpreadsheetTable() {
 
         let newRowIndex = rowIndex;
         let newColIndex = colIndex;
-        
+
         // Get current cell count to avoid stale closure
         const firstRow = table.getRowModel().rows[0];
         const maxColIndex = firstRow ? firstRow.getVisibleCells().length - 1 : 0;
@@ -179,14 +179,26 @@ export default function SpreadsheetTable() {
                             {row.getVisibleCells().map((cell, colIndex) => {
                                 const cellKey = `${rowIndex}-${colIndex}`;
                                 const isFocused = focusedCell?.rowIndex === rowIndex && focusedCell?.colIndex === colIndex;
-                                
+
                                 return (
                                     <td
                                         key={cell.id}
-                                        className={`bg-white ring-1 ring-[#f6f6f6] ring-inset
-                                    ${cell.column.id === "rowNumber" ? "px-1" : "px-0"}
-                                    ${isFocused ? "ring-2 ring-[#63916f]" : ""}`}
-                                        style={{ width: cell.column.getSize() }}
+                                        className={`bg-white
+                                            ${cell.column.id === "rowNumber" ? "px-1 w-8" : "px-0"}
+                                            ${isFocused ? "ring-2 ring-[#63916f]" : ""}
+                                            ${cell.column.id === "addColumn"
+                                                ? "border-t-2 border-b-2 border-y-[#f6f6f6] border-y-solid"
+                                                : "ring-1 ring-[#f6f6f6] ring-inset"}
+                                        `}
+                                        style={
+                                            cell.column.id === "addColumn"
+                                                ? {
+                                                    borderLeft: "2px dashed #cbcbcb",
+                                                    borderRight: "2px dashed #cbcbcb",
+                                                    width: cell.column.getSize(),
+                                                }
+                                                : { width: cell.column.getSize() }
+                                        }
                                     >
                                         <div
                                             ref={(el) => {

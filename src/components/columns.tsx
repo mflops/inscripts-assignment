@@ -37,11 +37,10 @@ const rowNumberCol: ColumnDef<RowData, unknown> = {
         </div>
     ),
     cell: ({ row }: { row: { index: number } }) => (
-        <div className="text-[#757575] text-center text-sm font-normal">{row.index + 1}</div>
+        <div className="text-[#757575] text-center text-sm font-normal cursor-default">{row.index + 1}</div>
     ),
+    enableResizing: true,
     size: 32,
-    minSize: 24,
-    maxSize: 64,
 }
 
 const jobRequestCol: ColumnDef<RowData, unknown> = {
@@ -50,7 +49,7 @@ const jobRequestCol: ColumnDef<RowData, unknown> = {
         <div className="flex flex-row items-center justify-between h-4">
             <div className="flex flex-row items-center gap-1">
                 <FaBriefcase className="text-[#AFAFAF] size-3" />
-                <span className="font-semibold text-xs">Job Request</span>
+                <span className="font-semibold text-xs cursor-default">Job Request</span>
             </div>
             <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" onClick={() => console.log('Job Request column sort clicked!')} />
         </div>
@@ -60,7 +59,7 @@ const jobRequestCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
+                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)] cursor-default"
                 value={value}
                 onChange={(e) => updateData(e.target.value)}
             />
@@ -75,7 +74,7 @@ const submittedCol: ColumnDef<RowData, unknown> = {
         <div className="flex flex-row items-center justify-between h-4">
             <div className="flex flex-row items-center gap-1">
                 <IoCalendar className="text-[#AFAFAF]/[0.7] size-3" />
-                <span className="font-semibold text-xs">Submitted</span>
+                <span className="font-semibold text-xs cursor-default">Submitted</span>
             </div>
             <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" onClick={() => console.log('Submitted column sort clicked!')} />
         </div>
@@ -85,7 +84,7 @@ const submittedCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="text-right outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
+                className="text-right outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)] cursor-default"
                 onChange={(e) => updateData(e.target.value)}
                 value={value}
             />
@@ -100,7 +99,7 @@ const statusCol: ColumnDef<RowData, unknown> = {
         <div className="flex flex-row items-center justify-between h-4">
             <div className="flex flex-row items-center gap-1">
                 <FaCircleChevronDown className="text-[#AFAFAF]/[0.7] size-3" />
-                <span className="font-semibold text-sm">Status</span>
+                <span className="font-semibold text-sm cursor-default">Status</span>
             </div>
             <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" onClick={() => console.log('Status column sort clicked!')} />
         </div>
@@ -140,7 +139,7 @@ const submitterCol: ColumnDef<RowData, unknown> = {
         <div className="flex flex-row items-center justify-between h-4">
             <div className="flex flex-row items-center gap-1">
                 <FaUser className="text-[#AFAFAF]/[0.7] size-3" />
-                <span className="font-semibold text-sm">Submitter</span>
+                <span className="font-semibold text-sm cursor-default">Submitter</span>
             </div>
             <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" onClick={() => console.log('Submitter column sort clicked!')} />
         </div>
@@ -150,7 +149,7 @@ const submitterCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
+                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)] cursor-default"
                 value={value}
                 onChange={(e) => updateData(e.target.value)}
             />
@@ -165,7 +164,7 @@ const urlCol: ColumnDef<RowData, unknown> = {
         <div className="flex flex-row items-center justify-between h-4">
             <div className="flex flex-row items-center gap-1">
                 <FaGlobe className="text-[#AFAFAF]/[0.7] size-3" />
-                <span className="font-semibold text-sm">URL</span>
+                <span className="font-semibold text-sm cursor-default">URL</span>
             </div>
             <IoChevronDownOutline className="text-[#AFAFAF] cursor-pointer size-3" onClick={() => console.log('URL column sort clicked!')} />
         </div>
@@ -175,7 +174,7 @@ const urlCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
+                className={`overflow-hidden text-ellipsis whitespace-nowrap outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)] underline hover:text-blue-500 ${value === "" ? "cursor-default" : "cursor-pointer"}`}
                 value={value}
                 onChange={(e) => updateData(e.target.value)}
             />
@@ -190,7 +189,7 @@ const assignedCol: ColumnDef<RowData, unknown> = {
         <div className="flex flex-row items-center justify-between h-4">
             <div className="flex flex-row items-center gap-1">
                 <IoHandRight className="text-[#AFAFAF]/[0.7] size-3" />
-                <span className="font-semibold text-sm">Assigned</span>
+                <span className="font-semibold text-sm cursor-default">Assigned</span>
             </div>
         </div>
     ),
@@ -199,7 +198,7 @@ const assignedCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] text-ellipsis focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
+                className="outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] text-ellipsis focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)] cursor-default"
                 value={value}
                 onChange={(e) => updateData(e.target.value)}
             />
@@ -213,7 +212,7 @@ const priorityCol: ColumnDef<RowData, unknown> = {
     header: () => (
         <div className="flex flex-row items-center justify-between h-4">
             <div className="flex flex-row items-center gap-1">
-                <span className="font-semibold text-sm">Priority</span>
+                <span className="font-semibold text-sm cursor-default">Priority</span>
             </div>
         </div>
     ),
@@ -223,7 +222,7 @@ const priorityCol: ColumnDef<RowData, unknown> = {
         const colorClass = priorityStyles[value];
         return (
             <input 
-                className={`text-center block ${colorClass} font-medium outline-none text-ellipsis px-2 w-full h-8 text-xs font-regular focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]`} 
+                className={`text-center block ${colorClass} font-medium outline-none text-ellipsis px-2 w-full h-8 text-xs font-regular focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)] cursor-default`} 
                 value={value} 
                 onChange={(e) => updateData(e.target.value)}
             />
@@ -237,7 +236,7 @@ const dueDateCol: ColumnDef<RowData, unknown> = {
     header: () => (
         <div className="flex flex-row items-center justify-between h-4">
             <div className="flex flex-row items-center gap-1">
-                <span className="font-semibold text-sm">Due Date</span>
+                <span className="font-semibold text-sm cursor-default">Due Date</span>
             </div>
         </div>
     ),
@@ -246,7 +245,7 @@ const dueDateCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         return (
             <input
-                className="text-right block outline-none text-ellipsis px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
+                className="text-right block outline-none text-ellipsis px-2 w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)] cursor-default"
                 value={value}
                 onChange={(e) => updateData(e.target.value)}
             />
@@ -260,21 +259,22 @@ const estValueCol: ColumnDef<RowData, unknown> = {
     header: () => (
         <div className="flex flex-row items-center justify-between h-4">
             <div className="flex flex-row items-center gap-1">
-                <span className="font-semibold text-sm">Est. Value</span>
+                <span className="font-semibold text-sm cursor-default">Est. Value</span>
             </div>
         </div>
     ),
     cell: (context: CellContext<RowData, unknown>) => {
         const { getValue, updateData } = context as ExtendedCellContext;
         const value = getValue() as number | string;
-
+        const isNumber = typeof value === "number" && !isNaN(value);
+        const formatted = isNumber ? new Intl.NumberFormat("en-US").format(value as number) : value;
         return (
             <div className="flex items-center gap-1 w-full">
                 <input
-                    className={`text-right outline-none text-ellipsis w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)] ${typeof value === "number" ? "pl-2" : "px-2"}`}
-                    value={value}
+                    className={`text-right outline-none text-ellipsis w-full h-8 text-xs font-regular text-[#121212] focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)] ${isNumber ? "pl-2" : "px-2"} cursor-default`}
+                    value={formatted}
                     onChange={(e) => {
-                        const val = e.target.value;
+                        const val = e.target.value.replace(/,/g, "");
                         const num = Number(val);
                         if (val === "" || isNaN(num)) {
                             updateData(val);
@@ -282,8 +282,9 @@ const estValueCol: ColumnDef<RowData, unknown> = {
                             updateData(num);
                         }
                     }}
+                    inputMode="numeric"
                 />
-                {typeof value === "number" && (
+                {isNumber && (
                     <MdCurrencyRupee className="text-neutral-400 text-md" />
                 )}
             </div>
@@ -296,7 +297,7 @@ const addColumn: ColumnDef<RowData, unknown> = {
     header: "",
     id: "addColumn",
     cell: () => (
-        <div className="w-40"></div>
+        <div className="w-40 border-x-2 border-dashed"></div>
     ),
     size: 110,
     maxSize: 110,
@@ -317,7 +318,7 @@ export const columns: ColumnDef<RowData, unknown>[] = [
             <div className="flex flex-row items-center gap-2 -mt-2 -mb-2">
                 <div className="flex flex-row items-center gap-1 bg-[#EEEEEE] p-1 rounded-md h-6">
                     <IoMdLink className="text-md text-[#1A8CFF]" />
-                    <span className="font-normal text-[#545454] text-xs">Q3 Financial Overview</span>
+                    <span className="font-normal text-[#545454] text-xs cursor-default">Q3 Financial Overview</span>
                 </div>
                 <VscSync className="text-[#FA6736] text-md -rotate-90 cursor-pointer" onClick={() => console.log('Sync button clicked!')} />
             </div>
@@ -336,7 +337,7 @@ export const columns: ColumnDef<RowData, unknown>[] = [
         header: () => (
             <div className="flex flex-row items-center justify-center gap-1 h-6 w-full px-1 py-[2px]">
                 <PiArrowsSplitBold className="text-[#A3ACA3]" />
-                <span className="text-[#505450] font-medium text-sm">ABC</span>
+                <span className="text-[#505450] font-medium text-sm cursor-default">ABC</span>
                 <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => (console.log("ABC menu clicked"))} />
             </div>
         ),
@@ -348,7 +349,7 @@ export const columns: ColumnDef<RowData, unknown>[] = [
         header: () => (
             <div className="flex flex-row items-center justify-center gap-1 px-1 py-[2px]">
                 <PiArrowsSplitBold className="text-[#FFFFFF]" />
-                <span className="text-[#463E59] font-medium text-sm text-center">
+                <span className="text-[#463E59] font-medium text-sm text-center cursor-default">
                     Answer a question
                 </span>
                 <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => (console.log("Answer a question menu clicked"))} />
@@ -362,7 +363,7 @@ export const columns: ColumnDef<RowData, unknown>[] = [
         header: () => (
             <div className="flex flex-row items-center justify-center gap-1 px-1 py-[2px]">
                 <PiArrowsSplitBold className="text-[#FFFFFF]" />
-                <span className="text-[#695149] font-medium text-sm">Extract</span>
+                <span className="text-[#695149] font-medium text-sm cursor-default">Extract</span>
                 <HiDotsHorizontal className="text-[#AFAFAF] cursor-pointer" onClick={() => (console.log("Extract menu clicked"))} />
             </div>
         ),

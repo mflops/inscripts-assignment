@@ -15,7 +15,7 @@ export const StatusBadge = ({ status, onClear }: StatusBadgeProps) => {
                 tabIndex={0}
             >
                 <div className="flex items-center gap-1 group">
-                    <span className={`px-1.5 py-0.5 rounded-full font-medium text-center text-sm transition-all duration-200 group-hover:pr-5 truncate whitespace-nowrap overflow-hidden ${statusStyles[status]}`}>
+                    <span className={`px-1.5 py-0.5 rounded-full font-medium text-center text-sm transition-all duration-200 group-hover:pr-5 truncate whitespace-nowrap overflow-hidden ${statusStyles[status]} cursor-default`}>
                         {status}
                     </span>
                     <button
