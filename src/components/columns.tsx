@@ -222,7 +222,11 @@ const priorityCol: ColumnDef<RowData, unknown> = {
         const value = getValue() as string;
         const colorClass = priorityStyles[value];
         return (
-            <input className={`text-center block ${colorClass} font-medium outline-none text-ellipsis px-2 w-full h-8 text-xs font-regular focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]`} value={value} onChange={(e) => updateData(e.target.value)} />
+            <input 
+                className={`text-center block ${colorClass} font-medium outline-none text-ellipsis px-2 w-full h-8 text-xs font-regular focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]`} 
+                value={value} 
+                onChange={(e) => updateData(e.target.value)}
+            />
         )
     },
     size: 124,
