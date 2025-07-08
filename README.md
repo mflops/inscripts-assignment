@@ -1,69 +1,75 @@
-# React + TypeScript + Vite
+# React Spreadsheet Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A pixel-perfect React spreadsheet prototype that replicates a Google Sheets/Excel-like experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Pixel-perfect Design**: Matches the Figma design specification
+- **Google Sheets Experience**: Editable cells with keyboard navigation
+- **Interactive Components**: All buttons log to console
+- **Column Resizing**: Drag to resize columns
+- **Status Management**: Color-coded status badges with validation
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 18 + TypeScript (strict mode)
+- Vite for build tooling
+- Tailwind CSS for styling
+- @tanstack/react-table for grid functionality
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Available Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript checks
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
+
 ```
+src/
+├── components/          # React components
+│   ├── SpreadsheetTable.tsx    # Main spreadsheet
+│   ├── columns.tsx             # Column definitions
+│   ├── Toolbar.tsx             # Action toolbar
+│   └── ...                     # Other UI components
+├── constants/           # Status definitions
+├── data.ts             # Sample data
+└── App.tsx             # Main app
+```
+
+## Acceptance Criteria Status
+
+✅ Pixel-perfect layout to Figma  
+✅ Google Sheets/Excel-like experience  
+✅ All buttons/tabs change state or log to console  
+✅ Code passes lint and type-check  
+✅ Clean commit history  
+
+## Stretch Goals
+
+✅ Keyboard navigation (arrow keys)  
+✅ Column resize functionality  
+
+## Trade-offs & Decisions
+
+### Technical Decisions
+- **@tanstack/react-table**: Chosen for robust grid functionality over custom implementation
+- **Local State**: No external state management needed for this prototype
+- **TypeScript Strict**: Enabled for better code quality
+
+### Design Decisions
+- **Color Accuracy**: Exact color matching with Figma design
+- **Accessibility**: Proper focus management and keyboard navigation
+- **Performance**: Optimized with useCallback and efficient state management
+
+---
+
+**Built with React 18, TypeScript, and Tailwind CSS**
