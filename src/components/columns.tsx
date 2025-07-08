@@ -14,19 +14,14 @@ import { VscSync } from "react-icons/vsc";
 import { PiArrowsSplitBold } from "react-icons/pi";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { IoAddOutline } from "react-icons/io5";
+import { StatusBadge } from "./StatusBadge";
+import { StatusInput } from "./StatusInput";
+import { VALID_STATUSES, type ValidStatus } from "../constants/status";
 
 // Extended cell context that includes our custom updateData function
 interface ExtendedCellContext extends CellContext<RowData, unknown> {
     updateData: (value: string | number) => void;
 }
-
-const statusStyles: Record<string, string> = {
-    "In-process": "bg-[#fef7d4] text-[#856900]",
-    "Complete": "bg-[#ccf7e3] text-[#00783b]",
-    "Blocked": "bg-[#ffdfdd] text-[#cd0000]",
-    "Need to start": "bg-[#e2e7f1] text-[#48526a]",
-    "": "bg-white text-black",
-};
 
 const priorityStyles: Record<string, string> = {
     "Low": "text-[#1A8CFF]",
@@ -113,21 +108,27 @@ const statusCol: ColumnDef<RowData, unknown> = {
     cell: (context: CellContext<RowData, unknown>) => {
         const { getValue, updateData } = context as ExtendedCellContext;
         const value = getValue() as string;
-        const colorClass = statusStyles[value as string];
-        return (
-            ["Complete", "In-process", "Blocked", "Need to start"].includes(value) ? (
-                <div className="flex flex-row items-center justify-center w-full h-8 px-2">
-                    <span className={`px-2 py-1 rounded-full font-medium text-center ${colorClass} w-fit h-fit text-sm truncate overflow-hidden whitespace-nowrap`}>
-                        {value}
-                    </span>
-                </div>
-            ) : (
-                <input
-                    className="text-center font-medium outline-none px-2 w-full h-8 text-xs font-regular text-[#121212] text-ellipsis focus:ring-[#63916f] focus:ring-1 focus:ring-inset focus:shadow-[0px_0px_10px_2px_rgba(108,139,124,0.2)]"
-                    value={value}
-                    onChange={(e) => updateData(e.target.value)}
+        
+        // Check if the value is a valid status
+        const isValidStatus = VALID_STATUSES.includes(value as ValidStatus);
+        
+        if (isValidStatus) {
+            return (
+                <StatusBadge 
+                    status={value as ValidStatus} 
+                    onClear={() => {
+                        updateData("");
+                    }} 
                 />
-            )
+            );
+        }
+        
+        // Show input for invalid or empty status values
+        return (
+            <StatusInput 
+                value={value} 
+                onChange={(newStatus) => updateData(newStatus)} 
+            />
         );
     },
     size: 124,
